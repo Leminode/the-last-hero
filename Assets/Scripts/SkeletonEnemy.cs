@@ -14,20 +14,10 @@ public class SkeletonEnemy : MonoBehaviour
     private float timeBetweenAttacks = 2f;        // Time between attacks (attack cooldown)
     private float lastAttackTime = 0f;            // Tracks the last time the skeleton attacked
 
-    [SerializeField]
-    private LayerMask groundLayer;                // Ground layer for ground detection
-    [SerializeField]
-    private LayerMask wallLayer;                  // Wall layer for wall detection
-
     private Transform player;                     // Reference to the player's transform
     private Rigidbody2D body;                     // Skeleton's Rigidbody2D
-    private BoxCollider2D colider;                // Skeleton's collider
-    private Animator animator;                    // Skeleton's animator
     private int currentWaypointIndex = 0;         // Current waypoint index for patrolling
     private bool isChasingPlayer = false;         // Whether the skeleton is currently chasing the player
-
-    private float horizontalInput;
-    private float defaultGravityScale;
 
     [SerializeField]
     private Transform[] waypoints;                // Array of waypoints for patrolling
@@ -35,9 +25,6 @@ public class SkeletonEnemy : MonoBehaviour
     private void Awake()
     {
         body = GetComponent<Rigidbody2D>();
-        colider = GetComponent<BoxCollider2D>();
-        animator = GetComponent<Animator>();
-        defaultGravityScale = body.gravityScale;
         player = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
@@ -72,7 +59,7 @@ public class SkeletonEnemy : MonoBehaviour
         if (waypoints.Length == 0) return;  // If there are no waypoints, stop patrolling
 
         // Get the current waypoint position (we only care about X axis for horizontal movement)
-        Vector2 targetPosition = new Vector2(waypoints[currentWaypointIndex].position.x, transform.position.y);
+        Vector2 targetPosition = new(waypoints[currentWaypointIndex].position.x, transform.position.y);
 
         // Move towards the current waypoint
         transform.position = Vector2.MoveTowards(transform.position, targetPosition, moveSpeed * Time.deltaTime);

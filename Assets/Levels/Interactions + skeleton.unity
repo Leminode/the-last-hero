@@ -450,6 +450,7 @@ MonoBehaviour:
   leverLeftSprite: {fileID: 2080426343, guid: 2928cd09484e46649980442f699c9cd7, type: 3}
   leverMiddleSprite: {fileID: 1423303050, guid: 2928cd09484e46649980442f699c9cd7, type: 3}
   leverRightSprite: {fileID: 1972933025, guid: 2928cd09484e46649980442f699c9cd7, type: 3}
+  activationRange: 1.2
 --- !u!212 &681793408
 SpriteRenderer:
   m_ObjectHideFlags: 0

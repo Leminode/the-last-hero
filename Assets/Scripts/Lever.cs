@@ -9,6 +9,9 @@ public class LeverController : MonoBehaviour
     private SpriteRenderer spriteRenderer;  // Reference to the Sprite Renderer
     private int leverState = 1;  // 0 = left, 1 = middle, 2 = right
 
+    public float activationRange = 2f;  // Range within which the player can activate the lever
+    private Transform playerTransform;  // Reference to the player's transform
+
     private void Start()
     {
         // Get the SpriteRenderer component attached to this GameObject
@@ -16,22 +19,23 @@ public class LeverController : MonoBehaviour
 
         // Set the initial state to middle
         spriteRenderer.sprite = leverMiddleSprite;
+
+        // Find the player by tag (make sure the player has the tag "Player")
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        if (player != null)
+        {
+            playerTransform = player.transform;
+        }
     }
 
     private void Update()
     {
-        // Detect right mouse click (Mouse1)
-        if (Input.GetMouseButtonDown(1))  // Right click only
+        // Check if the player is within activation range
+        if (playerTransform != null && Vector2.Distance(transform.position, playerTransform.position) <= activationRange)
         {
-            // Get the mouse position in world coordinates
-            Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-
-            // Check if the mouse is over the lever using Raycast2D
-            RaycastHit2D hit = Physics2D.Raycast(mousePos, Vector2.zero);
-
-            if (hit.collider != null && hit.collider.gameObject == gameObject)
+            // Detect if the 'E' key is pressed
+            if (Input.GetKeyDown(KeyCode.E))
             {
-                // Change the lever state if the player clicks on the lever with right click
                 ChangeLeverState();
             }
         }
