@@ -334,12 +334,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 286695837}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 66e3d8af4e6a0714493dc89342acea63, type: 3}
+  m_Script: {fileID: 11500000, guid: d5a321bd586a246febb35193d3f780ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 1517622744}
-  offset: {x: 0, y: 2, z: -10}
-  smoothSpeed: 1
+  followSpeed: 10
+  yOffset: 1.5
+  target: {fileID: 1517622744}
 --- !u!1 &558213883
 GameObject:
   m_ObjectHideFlags: 0
@@ -385,7 +385,7 @@ GameObject:
   - component: {fileID: 681793406}
   m_Layer: 9
   m_Name: Lever
-  m_TagString: Untagged
+  m_TagString: Lever
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
