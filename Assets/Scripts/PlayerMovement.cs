@@ -25,6 +25,10 @@ public class PlayerMovement : MonoBehaviour
     private readonly float wallJumpingDuration = 0.4f;
     private Vector2 wallJumpingPower = new(8, 16f);
 
+
+    //Audio sources
+    public AudioSource jumpSFX;
+
     private float horizontalInput;
 
     private bool isJumping;
@@ -60,6 +64,8 @@ public class PlayerMovement : MonoBehaviour
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpPower);
             isJumping = true;
+
+            jumpSFX.Play();
         }
         if (Input.GetKeyUp(KeyCode.Space) && rb.velocity.y > 0f)
         {
