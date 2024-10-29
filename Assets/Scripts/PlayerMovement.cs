@@ -22,7 +22,7 @@ public class PlayerMovement : MonoBehaviour
     private float wallJumpingDirection;
     private float wallJumpingCounter;
     private readonly float wallJumpingTime = 0.2f;
-    private readonly float wallJumpingDuration = 0.4f;
+    private readonly float wallJumpingDuration = 0.3f;
     private Vector2 wallJumpingPower = new(8, 16f);
 
     private float horizontalInput;
@@ -49,12 +49,17 @@ public class PlayerMovement : MonoBehaviour
         isGrounded = CheckIsGrounded();
         isTouchingWall = CheckIsTouchingWall();
 
+        if (isTouchingWall)
+        {
+            print("touching wall");
+        }
+
         // Used to prevent grounded animation from playing when jumping
         if (isJumping && !isGrounded)
         {
             isJumping = false;
         }
-
+        
         // Vertical movement
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
@@ -124,7 +129,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void WallSlide()
     {
-        if (isTouchingWall && !isGrounded && horizontalInput != 0)
+        if (isTouchingWall && !isGrounded && horizontalInput != 0 && !isWallJumping)
         {
             isWallSliding = true;
             rb.velocity = new Vector2(rb.velocity.x, Mathf.Clamp(rb.velocity.y, -wallSlideSpeed, float.MaxValue));
