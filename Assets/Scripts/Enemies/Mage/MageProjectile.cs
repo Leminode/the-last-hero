@@ -7,17 +7,22 @@ public class MageProjectile : MonoBehaviour
     [SerializeField]
     private float speed;
 
+    [SerializeField]
+    private float damage;
+
     private float direction;
     private bool hit;
     private BoxCollider2D boxCollider;
     private Animator animator;
     private float lifetime = 0;
     private const float maximumLifetimeDuration = 10;
+    private Transform player;
 
     private void Awake()
     {
         animator = GetComponent<Animator>();
         boxCollider = GetComponent<BoxCollider2D>();
+        player = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     private void Update()
@@ -35,10 +40,13 @@ public class MageProjectile : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (!collision.gameObject.CompareTag("Player"))
+            return;
+
         hit = true;
         boxCollider.enabled = false;
         gameObject.SetActive(false);
-        // Explode?
+        player.GetComponent<Health>().TakeDamage(damage);
     }
     public void SetDirection(float newDirection)
     {

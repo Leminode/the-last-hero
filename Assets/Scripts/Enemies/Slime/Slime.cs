@@ -9,7 +9,7 @@ public class Slime : MonoBehaviour
     private float directionChangeCooldonw;
 
     [SerializeField]
-    private int damage;
+    private float damage;
 
     [SerializeField]
     private float speed;
@@ -33,6 +33,7 @@ public class Slime : MonoBehaviour
 
     private Animator animator;
     private Rigidbody2D rigibody;
+    private Transform player;
 
     private readonly System.Random random = new();
 
@@ -40,6 +41,7 @@ public class Slime : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         rigibody = GetComponent<Rigidbody2D>();
+        player = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     private void Update()
@@ -82,7 +84,7 @@ public class Slime : MonoBehaviour
         }
         if (collision.gameObject.CompareTag("Player"))
         {
-            // playerHealth.TakeDamage(damage);
+            player.GetComponent<Health>().TakeDamage(damage);
         }
     }
 }
