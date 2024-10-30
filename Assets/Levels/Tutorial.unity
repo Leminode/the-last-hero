@@ -1549,10 +1549,90 @@ PrefabInstance:
       propertyPath: m_Name
       value: UICanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 2244738357135530564, guid: 15db770513bd02c4a90141efec6aaddf, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2244738357135530564, guid: 15db770513bd02c4a90141efec6aaddf, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2244738357135530564, guid: 15db770513bd02c4a90141efec6aaddf, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2244738357135530564, guid: 15db770513bd02c4a90141efec6aaddf, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2244738357135530564, guid: 15db770513bd02c4a90141efec6aaddf, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 303.9237
+      objectReference: {fileID: 0}
+    - target: {fileID: 2244738357135530564, guid: 15db770513bd02c4a90141efec6aaddf, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 82.41998
+      objectReference: {fileID: 0}
+    - target: {fileID: 2244738357135530564, guid: 15db770513bd02c4a90141efec6aaddf, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2244738357135530564, guid: 15db770513bd02c4a90141efec6aaddf, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4253924155263956525, guid: 15db770513bd02c4a90141efec6aaddf, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4253924155263956525, guid: 15db770513bd02c4a90141efec6aaddf, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4253924155263956525, guid: 15db770513bd02c4a90141efec6aaddf, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4253924155263956525, guid: 15db770513bd02c4a90141efec6aaddf, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 303.9237
+      objectReference: {fileID: 0}
+    - target: {fileID: 4253924155263956525, guid: 15db770513bd02c4a90141efec6aaddf, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 82.42
+      objectReference: {fileID: 0}
+    - target: {fileID: 4253924155263956525, guid: 15db770513bd02c4a90141efec6aaddf, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 221
+      objectReference: {fileID: 0}
+    - target: {fileID: 4253924155263956525, guid: 15db770513bd02c4a90141efec6aaddf, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 433
+      objectReference: {fileID: 0}
     - target: {fileID: 5476349547314421322, guid: 15db770513bd02c4a90141efec6aaddf, type: 3}
       propertyPath: playerHealth
       value: 
       objectReference: {fileID: 1232985610}
+    - target: {fileID: 7342805983576672075, guid: 15db770513bd02c4a90141efec6aaddf, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7342805983576672075, guid: 15db770513bd02c4a90141efec6aaddf, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7342805983576672075, guid: 15db770513bd02c4a90141efec6aaddf, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7342805983576672075, guid: 15db770513bd02c4a90141efec6aaddf, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8624323268618314624, guid: 15db770513bd02c4a90141efec6aaddf, type: 3}
+      propertyPath: m_ReferencePixelsPerUnit
+      value: 16
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
