@@ -1587,11 +1587,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4253924155263956525, guid: 15db770513bd02c4a90141efec6aaddf, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4253924155263956525, guid: 15db770513bd02c4a90141efec6aaddf, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4253924155263956525, guid: 15db770513bd02c4a90141efec6aaddf, type: 3}
       propertyPath: m_SizeDelta.x
@@ -1599,7 +1599,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4253924155263956525, guid: 15db770513bd02c4a90141efec6aaddf, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 82.42
+      value: 82.41998
       objectReference: {fileID: 0}
     - target: {fileID: 4253924155263956525, guid: 15db770513bd02c4a90141efec6aaddf, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -1607,7 +1607,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4253924155263956525, guid: 15db770513bd02c4a90141efec6aaddf, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 433
+      value: -107
       objectReference: {fileID: 0}
     - target: {fileID: 5476349547314421322, guid: 15db770513bd02c4a90141efec6aaddf, type: 3}
       propertyPath: playerHealth
