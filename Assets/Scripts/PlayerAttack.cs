@@ -8,6 +8,9 @@ public class PlayerAttack : MonoBehaviour
     private Animator animator;
     private PlayerMovement playerMovement;
 
+    //Audio source
+    public AudioSource hitSFX;
+
     private float cooldownTimer = Mathf.Infinity;
 
     private void Awake()
@@ -21,6 +24,7 @@ public class PlayerAttack : MonoBehaviour
         if (Input.GetMouseButtonDown(0) && cooldownTimer > attackCooldown && playerMovement.CanAttack())
         {
             Attack();
+            hitSFX.Play();
         }
 
         cooldownTimer += Time.deltaTime;
