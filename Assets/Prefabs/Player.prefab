@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1621211764802503827}
   - component: {fileID: 4456068734937965198}
   - component: {fileID: 5997657505972824849}
+  - component: {fileID: 2215789435982549766}
   - component: {fileID: 230775476148339752}
   - component: {fileID: 3038587771258806925}
   - component: {fileID: 620786986477109126}
@@ -51,13 +52,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 10
   jumpPower: 15
-  wallJumpCooldown: 0
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
   wallLayer:
     serializedVersion: 2
     m_Bits: 64
+  jumpSFX: {fileID: 0}
 --- !u!114 &5997657505972824849
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -71,6 +72,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackCooldown: 0.8
+  hitSFX: {fileID: 0}
+--- !u!114 &2215789435982549766
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 432676205902224933}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58f87f75d1e8e274f86592b8238f01bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startingHealth: 5
 --- !u!212 &230775476148339752
 SpriteRenderer:
   m_ObjectHideFlags: 0
