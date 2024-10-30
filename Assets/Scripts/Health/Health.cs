@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class Health : MonoBehaviour
@@ -8,6 +9,7 @@ public class Health : MonoBehaviour
     public float currentHealth { get; private set; }
 
     private Animator animator;
+    private Rigidbody2D rb;
 
     private bool isDead;
 
@@ -15,6 +17,7 @@ public class Health : MonoBehaviour
     {
         currentHealth = startingHealth;
         animator = GetComponent<Animator>();
+        rb = GetComponent<Rigidbody2D>();
     }
 
     public void TakeDamage(float damage)
@@ -27,9 +30,20 @@ public class Health : MonoBehaviour
         }
         else if (!isDead)
         {
-            animator.SetTrigger("die");
-            GetComponent<PlayerMovement>().enabled = false;
             isDead = true;
+            animator.SetTrigger("die");
+            // TODO: only for demo purposes
+            rb.constraints = RigidbodyConstraints2D.FreezePosition;
+            StartCoroutine(Respawn());
         }
+    }
+    
+    private IEnumerator Respawn()
+    {
+        yield return new WaitForSeconds(1);
+        transform.position = new Vector3(3.61f, -4.58217f, 0);
+        currentHealth = startingHealth;
+        rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+        isDead = false;
     }
 }

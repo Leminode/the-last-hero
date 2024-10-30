@@ -23,7 +23,7 @@ public class PlayerMovement : MonoBehaviour
     private float wallJumpingCounter;
     private readonly float wallJumpingTime = 0.2f;
     private readonly float wallJumpingDuration = 0.3f;
-    private Vector2 wallJumpingPower = new(8, 16f);
+    private Vector2 wallJumpingPower = new(5, 20f);
 
 
     //Audio sources
