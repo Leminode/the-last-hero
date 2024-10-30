@@ -4,18 +4,27 @@ public class SkeletonEnemy : MonoBehaviour
 {
     [SerializeField]
     private float moveSpeed = 2f;                 // Patrol speed
+
     [SerializeField]
     private float detectionRange = 5f;            // Distance at which the skeleton detects the player
+
     [SerializeField]
     private float attackRange = 1.5f;             // Distance at which the skeleton starts attacking
+
     [SerializeField]
     private float deAggroRange = 10f;             // Distance at which the skeleton stops chasing
+
     [SerializeField]
     private float timeBetweenAttacks = 2f;        // Time between attacks (attack cooldown)
+
+    [SerializeField]
+    private float damage;
+
     private float lastAttackTime = 0f;            // Tracks the last time the skeleton attacked
 
     private Transform player;                     // Reference to the player's transform
     private Rigidbody2D body;                     // Skeleton's Rigidbody2D
+
     private int currentWaypointIndex = 0;         // Current waypoint index for patrolling
     private bool isChasingPlayer = false;         // Whether the skeleton is currently chasing the player
 
@@ -121,5 +130,6 @@ public class SkeletonEnemy : MonoBehaviour
         // Add attack behavior (e.g., damage the player or play an attack animation)
         Debug.Log("Skeleton is attacking the player!");
         // You can add logic here to deal damage to the player
+        player.GetComponent<Health>().TakeDamage(damage);
     }
 }
