@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: CaveDarkBackground 1
+  m_Name: DarkBackground
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: 1350509835, guid: 5026309a79b0a884b90bf4b01eb5a114, type: 3}
-  m_Color: {r: 0.015686275, g: 0.019607844, b: 0.0627451, a: 1}
+  m_Sprite: {fileID: -508585476, guid: 2928cd09484e46649980442f699c9cd7, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
     e00: 1
     e01: 0
