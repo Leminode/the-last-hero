@@ -41,7 +41,7 @@ public class Health : MonoBehaviour
     private IEnumerator Respawn()
     {
         yield return new WaitForSeconds(1);
-        transform.position = new Vector3(3.61f, -4.58217f, 0);
+        GameManager.Instance.ResetPlayerPosition();
         currentHealth = startingHealth;
         rb.constraints = RigidbodyConstraints2D.FreezeRotation;
         isDead = false;
