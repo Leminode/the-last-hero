@@ -1,11 +1,10 @@
 using System.Collections;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class Health : MonoBehaviour
 {
     [SerializeField]
-    protected float startingHealth;
+    private float startingHealth;
 
     [SerializeField]
     private bool restartLevel;
