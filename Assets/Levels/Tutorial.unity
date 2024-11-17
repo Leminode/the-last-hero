@@ -555,6 +555,50 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cam: {fileID: 1070510388}
   delta: 0.3
+--- !u!1 &209847295
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 209847297}
+  - component: {fileID: 209847296}
+  m_Layer: 0
+  m_Name: Game Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &209847296
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 209847295}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a091eed8a75e4f169f379cb5f8dd863f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &209847297
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 209847295}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.3292816, y: 0.13132322, z: 0.8182104}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &211267327
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9645,7 +9689,7 @@ GameObject:
   - component: {fileID: 925588706}
   - component: {fileID: 925588709}
   m_Layer: 3
-  m_Name: Change scene
+  m_Name: Next Level
   m_TagString: Untagged
   m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -9678,7 +9722,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c38705cca12b4fb6ae72e266ee883c87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneName: Levels/Level 1
 --- !u!212 &925588708
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -127107,7 +127150,7 @@ GameObject:
   - component: {fileID: 2024094790}
   - component: {fileID: 2024094789}
   m_Layer: 0
-  m_Name: Global light
+  m_Name: Global Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -127446,3 +127489,4 @@ SceneRoots:
   - {fileID: 211267327}
   - {fileID: 327212279}
   - {fileID: 925588705}
+  - {fileID: 209847297}
