@@ -1,4 +1,3 @@
-using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -9,9 +8,6 @@ public class GameManager : MonoBehaviour
     private const int MainMenuScene = 0;
     private const int FirstLevelScene = 1;
     private const int LastLevelScene = 2;
-
-    private GameObject _player;
-    private Vector3? _startPosition;
 
     public static GameManager Instance;
 
@@ -26,9 +22,6 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        
-        Instance._player = GameObject.FindGameObjectWithTag("Player");
-        Instance.SavePlayerPosition();
     }
 
     public void ContinueLevel()
@@ -62,36 +55,17 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(nextScene);
     }
 
+    public void RestartLevel()
+    {
+        var currentScene = SceneManager.GetActiveScene().buildIndex;
+        
+        Debug.Log($"GameManager: restart level, changing scene to {currentScene}");
+        
+        SceneManager.LoadScene(currentScene);
+    }
+
     public void MainMenu()
     {
         SceneManager.LoadScene(MainMenuScene);
-    }
-
-    public void ResetPlayerPosition()
-    {
-        if (_startPosition is null || _player.IsUnityNull())
-        {
-            return;
-        }
-
-        var position = _player.transform.position;
-
-        Debug.Log($"GameManager: resetting player position {position.ToString()}");
-
-        _player.transform.position = _startPosition.Value;
-    }
-
-    private void SavePlayerPosition()
-    {
-        if (_player.IsUnityNull())
-        {
-            return;
-        }
-
-        var position = _player.transform.position;
-
-        Debug.Log($"GameManager: saving player position {position.ToString()}");
-
-        _startPosition = position;
     }
 }

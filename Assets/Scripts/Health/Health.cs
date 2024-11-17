@@ -1,49 +1,65 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Health : MonoBehaviour
 {
     [SerializeField]
-    private float startingHealth;
+    protected float startingHealth;
 
-    public float currentHealth { get; private set; }
+    [SerializeField]
+    private bool restartLevel;
+    
+    [SerializeField]
+    private float respawnTime = 1f;
 
-    private Animator animator;
-    private Rigidbody2D rb;
+    private Animator _animator;
 
-    private bool isDead;
+    private Rigidbody2D _rb;
 
-    private void Awake()
+    public bool IsDead { get; private set; }
+    
+    public float CurrentHealth { get; private set; }
+
+    protected virtual void Start()
     {
-        currentHealth = startingHealth;
-        animator = GetComponent<Animator>();
-        rb = GetComponent<Rigidbody2D>();
+        CurrentHealth = startingHealth;
+        _animator = GetComponent<Animator>();
+
+        if (restartLevel)
+        {
+            _rb = GetComponent<Rigidbody2D>();
+        }
     }
 
     public void TakeDamage(float damage)
     {
-        currentHealth = Mathf.Clamp(currentHealth - damage, 0, startingHealth);
+        CurrentHealth = Mathf.Clamp(CurrentHealth - damage, 0, startingHealth);
 
-        if (currentHealth > 0)
+        if (CurrentHealth > 0)
         {
-            animator.SetTrigger("hurt");
+            _animator.SetTrigger("hurt");
         }
-        else if (!isDead)
+        else if (!IsDead)
         {
-            isDead = true;
-            animator.SetTrigger("die");
-            // TODO: only for demo purposes
-            rb.constraints = RigidbodyConstraints2D.FreezePosition;
-            StartCoroutine(Respawn());
+            IsDead = true;
+            _animator.SetTrigger("die");
+
+            if (restartLevel)
+            {
+                _rb.constraints = RigidbodyConstraints2D.FreezeAll;
+                StartCoroutine(RestartLevel());
+            }
+            else
+            {
+                gameObject.SetActive(false);
+            }
         }
     }
-    
-    private IEnumerator Respawn()
+
+    private IEnumerator RestartLevel()
     {
-        yield return new WaitForSeconds(1);
-        GameManager.Instance.ResetPlayerPosition();
-        currentHealth = startingHealth;
-        rb.constraints = RigidbodyConstraints2D.FreezeRotation;
-        isDead = false;
+        yield return new WaitForSeconds(respawnTime);
+        GameManager.Instance.RestartLevel();
     }
 }
