@@ -72,6 +72,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackCooldown: 0.8
+  range: 0
+  damage: 0
+  boxCollider: {fileID: 0}
+  colliderDistance: 0
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 0
   hitSFX: {fileID: 0}
 --- !u!114 &2215789435982549766
 MonoBehaviour:
@@ -86,6 +93,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startingHealth: 5
+  restartLevel: 1
+  respawnTime: 1
 --- !u!212 &230775476148339752
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -173,7 +182,7 @@ BoxCollider2D:
   m_Offset: {x: -0.31411397, y: -0.28062534}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0.42, y: 0.5}
     oldSize: {x: 4, y: 2.75}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
