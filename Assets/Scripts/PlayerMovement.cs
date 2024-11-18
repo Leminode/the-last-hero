@@ -70,7 +70,8 @@ public class PlayerMovement : MonoBehaviour
             rb.velocity = new Vector2(rb.velocity.x, jumpPower);
             isJumping = true;
 
-            jumpSFX.Play();
+            if (jumpSFX != null)
+                jumpSFX.Play();
         }
         if (Input.GetKeyUp(KeyCode.Space) && rb.velocity.y > 0f)
         {

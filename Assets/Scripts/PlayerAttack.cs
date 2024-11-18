@@ -39,7 +39,8 @@ public class PlayerAttack : MonoBehaviour
         if (Input.GetMouseButtonDown(0) && cooldownTimer > attackCooldown && playerMovement.CanAttack())
         {
             Attack();
-            hitSFX.Play();
+            if (hitSFX != null)
+                hitSFX.Play();
         }
 
         cooldownTimer += Time.deltaTime;
