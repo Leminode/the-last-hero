@@ -6,16 +6,25 @@ public class LeverController : MonoBehaviour
     public Sprite leverMiddleSprite; // Sprite for the middle position
     public Sprite leverRightSprite;  // Sprite for the right position
 
-    private SpriteRenderer spriteRenderer;  // Reference to the Sprite Renderer
-    private int leverState = 1;  // 0 = left, 1 = middle, 2 = right
+    [SerializeField]
+    private AudioSource audioSource;  // Use the existing Audio Source
 
-    public float activationRange = 2f;  // Range within which the player can activate the lever
-    private Transform playerTransform;  // Reference to the player's transform
+    private SpriteRenderer spriteRenderer;  // Reference to the Sprite Renderer
+    private int leverState = 1;             // 0 = left, 1 = middle, 2 = right
+
+    public float activationRange = 2f;      // Range within which the player can activate the lever
+    private Transform playerTransform;      // Reference to the player's transform
 
     private void Start()
     {
         // Get the SpriteRenderer component attached to this GameObject
         spriteRenderer = GetComponent<SpriteRenderer>();
+
+        // Ensure an AudioSource is assigned in the Inspector
+        if (audioSource == null)
+        {
+            Debug.LogError("AudioSource is not assigned to the LeverController script.");
+        }
 
         // Set the initial state to middle
         spriteRenderer.sprite = leverMiddleSprite;
@@ -61,7 +70,19 @@ public class LeverController : MonoBehaviour
                 break;
         }
 
+        // Play the sound using the existing AudioSource
+        PlaySound();
+
         // Debug message to check the state
         Debug.Log("Lever state: " + leverState);
+    }
+
+    // Plays the sound effect using the existing AudioSource
+    private void PlaySound()
+    {
+        if (audioSource != null)
+        {
+            audioSource.Play(); // Play the currently assigned clip
+        }
     }
 }

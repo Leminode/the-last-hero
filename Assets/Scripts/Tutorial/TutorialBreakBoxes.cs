@@ -7,6 +7,11 @@ public class TutorialBreakBoxes : MonoBehaviour
     [SerializeField]
     private GameObject target;
 
+    [SerializeField]
+    private AudioClip breakSound; // Sound to play when boxes break
+
+    private AudioSource audioSource; // To play the sound
+
     private readonly List<GameObject> _subjects = new();
     private bool _flowStarted;
 
@@ -16,6 +21,16 @@ public class TutorialBreakBoxes : MonoBehaviour
         {
             _subjects.Add(child.gameObject);
         }
+
+        // Get or add an AudioSource component
+        audioSource = GetComponent<AudioSource>();
+        if (audioSource == null)
+        {
+            audioSource = gameObject.AddComponent<AudioSource>();
+        }
+
+        // Configure AudioSource properties
+        audioSource.playOnAwake = false;
     }
 
     public void ChildCollision2D(Collision2D collision)
@@ -26,10 +41,15 @@ public class TutorialBreakBoxes : MonoBehaviour
         }
 
         _flowStarted = true;
-        _subjects.ForEach(delegate(GameObject subject)
+
+        // Play the breaking sound when destruction begins
+        PlayBreakSound();
+
+        _subjects.ForEach(delegate (GameObject subject)
         {
             subject.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
         });
+
         StartCoroutine(Destruct());
     }
 
@@ -49,6 +69,15 @@ public class TutorialBreakBoxes : MonoBehaviour
             }
 
             destroy = !destroy;
+        }
+    }
+
+    private void PlayBreakSound()
+    {
+        if (breakSound != null && audioSource != null)
+        {
+            audioSource.clip = breakSound;
+            audioSource.Play();
         }
     }
 }

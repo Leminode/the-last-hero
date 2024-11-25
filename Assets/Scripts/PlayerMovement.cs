@@ -28,6 +28,7 @@ public class PlayerMovement : MonoBehaviour
 
     //Audio sources
     public AudioSource jumpSFX;
+    public AudioSource runSFX;
 
     private float horizontalInput;
 
@@ -36,6 +37,7 @@ public class PlayerMovement : MonoBehaviour
     private bool isTouchingWall;
     private bool isWallSliding;
     private bool isGrounded;
+    private bool isRunning;
 
     private void Awake()
     {
@@ -57,6 +59,8 @@ public class PlayerMovement : MonoBehaviour
         {
             print("touching wall");
         }
+
+        HandleRunningSFX();
 
         // Used to prevent grounded animation from playing when jumping
         if (isJumping && !isGrounded)
@@ -95,6 +99,22 @@ public class PlayerMovement : MonoBehaviour
         anim.SetBool("wallSliding", isWallSliding);
         anim.SetBool("jumping", isJumping);
         anim.SetFloat("yVelocity", rb.velocity.y);
+    }
+
+    private void HandleRunningSFX()
+    {
+        bool isPlayerRunning = horizontalInput != 0 && isGrounded && !isTouchingWall;
+
+        if (isPlayerRunning && !isRunning)
+        {
+            runSFX.Play(); // Start running sound
+            isRunning = true;
+        }
+        else if (!isPlayerRunning && isRunning)
+        {
+            runSFX.Stop(); // Stop running sound
+            isRunning = false;
+        }
     }
 
     private void WallJump()
