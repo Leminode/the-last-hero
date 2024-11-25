@@ -12,19 +12,17 @@ public class PlayerAttack : MonoBehaviour
     private float damage;
 
     [SerializeField]
-    private BoxCollider2D boxCollider;
-
-    [SerializeField]
     private float colliderDistance;
 
     [SerializeField]
     private LayerMask enemyLayer;
 
+    [SerializeField]
+    private AudioClip hitSound;
+
     private Animator animator;
     private PlayerMovement playerMovement;
-
-    //Audio source
-    public AudioSource hitSFX;
+    private BoxCollider2D boxCollider;
 
     private float cooldownTimer = Mathf.Infinity;
 
@@ -32,6 +30,7 @@ public class PlayerAttack : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         playerMovement = GetComponent<PlayerMovement>();
+        boxCollider = GetComponent<BoxCollider2D>();
     }
 
     private void Update()
@@ -39,8 +38,7 @@ public class PlayerAttack : MonoBehaviour
         if (Input.GetMouseButtonDown(0) && cooldownTimer > attackCooldown && playerMovement.CanAttack())
         {
             Attack();
-            if (hitSFX != null)
-                hitSFX.Play();
+            PlayerSoundManager.instance.PlaySound(hitSound);
         }
 
         cooldownTimer += Time.deltaTime;
@@ -67,6 +65,9 @@ public class PlayerAttack : MonoBehaviour
 
     private void OnDrawGizmos()
     {
+        if (boxCollider == null)
+            return;
+
         Gizmos.color = Color.red;
         Gizmos.DrawWireCube(
             boxCollider.bounds.center + colliderDistance * range * transform.localScale.x * transform.right,
