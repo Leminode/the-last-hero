@@ -14,6 +14,9 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     private LayerMask wallLayer;
 
+    [SerializeField]
+    private AudioClip jumpSound;
+
     private Rigidbody2D rb;
     private BoxCollider2D col;
     private Animator anim;
@@ -24,11 +27,6 @@ public class PlayerMovement : MonoBehaviour
     private readonly float wallJumpingTime = 0.2f;
     private readonly float wallJumpingDuration = 0.3f;
     private Vector2 wallJumpingPower = new(5, 20f);
-
-
-    //Audio sources
-    public AudioSource jumpSFX;
-    public AudioSource runSFX;
 
     private float horizontalInput;
 
@@ -74,16 +72,13 @@ public class PlayerMovement : MonoBehaviour
             rb.velocity = new Vector2(rb.velocity.x, jumpPower);
             isJumping = true;
 
-            jumpSFX.Play();
+            PlayerSoundManager.instance.PlaySound(jumpSound);
         }
         if (Input.GetKeyUp(KeyCode.Space) && rb.velocity.y > 0f)
         {
             rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
         }
 
-        // TODO: fix upto fall, fall transition is too quick
-        // TODO: wall jump does not unstick from wall, below condition for some reason always returns true
-        // wall jumping gets turned off by wall sliding
         WallSlide();
         WallJump();
 
@@ -187,7 +182,7 @@ public class PlayerMovement : MonoBehaviour
 
     private bool CheckIsTouchingWall()
     {
-        RaycastHit2D raycastHit = Physics2D.BoxCast(col.bounds.center, col.bounds.size, 0, new Vector2(transform.localScale.x, 0), 0.01f, wallLayer);
+        RaycastHit2D raycastHit = Physics2D.Raycast(col.bounds.center, new Vector2(transform.localScale.x, 0), col.bounds.extents.x + 0.1f, wallLayer);
         return raycastHit.collider != null;
     }
 

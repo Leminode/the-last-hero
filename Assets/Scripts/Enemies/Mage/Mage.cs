@@ -29,16 +29,9 @@ public class Mage : MonoBehaviour
     [SerializeField]
     private GameObject[] fireballs;
 
-    private Animator animator;
-
     private float mageAttackTimer = Mathf.Infinity;
 
     private const string mageAttackTriggerName = "mageAttack";
-
-    private void Awake()
-    {
-        animator = GetComponent<Animator>();
-    }
 
     private void Update()
     {
