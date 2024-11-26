@@ -17,9 +17,14 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     private AudioClip jumpSound;
 
+    [SerializeField]
+    private AudioClip runningSound; // Add running sound
+
     private Rigidbody2D rb;
     private BoxCollider2D col;
     private Animator anim;
+
+    private AudioSource runningAudioSource; // Dedicated AudioSource for running
 
     private float wallSlideSpeed;
     private float wallJumpingDirection;
@@ -42,6 +47,12 @@ public class PlayerMovement : MonoBehaviour
         col = GetComponent<BoxCollider2D>();
         anim = GetComponent<Animator>();
 
+        // Initialize the AudioSource for running
+        runningAudioSource = gameObject.AddComponent<AudioSource>();
+        runningAudioSource.clip = runningSound;
+        runningAudioSource.loop = true; // Running sound should loop
+        runningAudioSource.playOnAwake = false;
+
         wallSlideSpeed = speed / 6;
     }
 
@@ -57,13 +68,11 @@ public class PlayerMovement : MonoBehaviour
             print("touching wall");
         }
 
-        // Used to prevent grounded animation from playing when jumping
         if (isJumping && !isGrounded)
         {
             isJumping = false;
         }
-        
-        // Vertical movement
+
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpPower);
@@ -85,12 +94,33 @@ public class PlayerMovement : MonoBehaviour
             rb.velocity = new Vector2(horizontalInput * speed, rb.velocity.y);
         }
 
-        // Animations
+        HandleRunningSound();
+
         anim.SetBool("run", (horizontalInput != 0 || rb.velocity.x != 0) && isGrounded && !isTouchingWall);
         anim.SetBool("grounded", isGrounded && !isJumping);
         anim.SetBool("wallSliding", isWallSliding);
         anim.SetBool("jumping", isJumping);
         anim.SetFloat("yVelocity", rb.velocity.y);
+    }
+
+    private void HandleRunningSound()
+    {
+        bool isRunning = horizontalInput != 0 && isGrounded && !isTouchingWall;
+
+        if (isRunning)
+        {
+            if (!runningAudioSource.isPlaying)
+            {
+                runningAudioSource.Play(); // Start the running sound
+            }
+        }
+        else
+        {
+            if (runningAudioSource.isPlaying)
+            {
+                runningAudioSource.Stop(); // Stop the running sound
+            }
+        }
     }
 
     private void WallJump()
@@ -144,7 +174,6 @@ public class PlayerMovement : MonoBehaviour
 
     private void Flip()
     {
-        // Flip playermodel when changing movement direction
         if (horizontalInput > 0.01f)
         {
             transform.localScale = Vector3.one;
