@@ -208,6 +208,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58f87f75d1e8e274f86592b8238f01bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BossDied:
+    m_PersistentCalls:
+      m_Calls: []
   startingHealth: 0.1
   restartLevel: 0
   respawnTime: 0
@@ -419,6 +422,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58f87f75d1e8e274f86592b8238f01bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BossDied:
+    m_PersistentCalls:
+      m_Calls: []
   startingHealth: 0.1
   restartLevel: 0
   respawnTime: 0
@@ -630,6 +636,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58f87f75d1e8e274f86592b8238f01bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BossDied:
+    m_PersistentCalls:
+      m_Calls: []
   startingHealth: 0.1
   restartLevel: 0
   respawnTime: 0
@@ -841,6 +850,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58f87f75d1e8e274f86592b8238f01bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BossDied:
+    m_PersistentCalls:
+      m_Calls: []
   startingHealth: 0.1
   restartLevel: 0
   respawnTime: 0
@@ -1052,6 +1064,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58f87f75d1e8e274f86592b8238f01bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BossDied:
+    m_PersistentCalls:
+      m_Calls: []
   startingHealth: 0.1
   restartLevel: 0
   respawnTime: 0
@@ -1263,6 +1278,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58f87f75d1e8e274f86592b8238f01bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BossDied:
+    m_PersistentCalls:
+      m_Calls: []
   startingHealth: 0.1
   restartLevel: 0
   respawnTime: 0
@@ -1474,6 +1492,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58f87f75d1e8e274f86592b8238f01bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BossDied:
+    m_PersistentCalls:
+      m_Calls: []
   startingHealth: 0.1
   restartLevel: 0
   respawnTime: 0
@@ -1685,6 +1706,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58f87f75d1e8e274f86592b8238f01bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BossDied:
+    m_PersistentCalls:
+      m_Calls: []
   startingHealth: 0.1
   restartLevel: 0
   respawnTime: 0
@@ -1896,6 +1920,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58f87f75d1e8e274f86592b8238f01bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BossDied:
+    m_PersistentCalls:
+      m_Calls: []
   startingHealth: 0.1
   restartLevel: 0
   respawnTime: 0
@@ -2107,6 +2134,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58f87f75d1e8e274f86592b8238f01bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BossDied:
+    m_PersistentCalls:
+      m_Calls: []
   startingHealth: 0.1
   restartLevel: 0
   respawnTime: 0
@@ -2380,6 +2410,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58f87f75d1e8e274f86592b8238f01bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BossDied:
+    m_PersistentCalls:
+      m_Calls: []
   startingHealth: 0.1
   restartLevel: 0
   respawnTime: 0
@@ -2591,6 +2624,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58f87f75d1e8e274f86592b8238f01bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BossDied:
+    m_PersistentCalls:
+      m_Calls: []
   startingHealth: 0.1
   restartLevel: 0
   respawnTime: 0
@@ -2802,6 +2838,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58f87f75d1e8e274f86592b8238f01bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BossDied:
+    m_PersistentCalls:
+      m_Calls: []
   startingHealth: 0.1
   restartLevel: 0
   respawnTime: 0
@@ -3013,6 +3052,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58f87f75d1e8e274f86592b8238f01bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BossDied:
+    m_PersistentCalls:
+      m_Calls: []
   startingHealth: 0.1
   restartLevel: 0
   respawnTime: 0
@@ -3031,9 +3073,9 @@ GameObject:
   - component: {fileID: 3221412322331648422}
   - component: {fileID: 6051624903258397837}
   - component: {fileID: 7380715623763299396}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: boss
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3278,6 +3320,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58f87f75d1e8e274f86592b8238f01bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BossDied:
+    m_PersistentCalls:
+      m_Calls: []
   startingHealth: 5
   restartLevel: 0
   respawnTime: 1
@@ -3571,6 +3616,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58f87f75d1e8e274f86592b8238f01bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BossDied:
+    m_PersistentCalls:
+      m_Calls: []
   startingHealth: 0.1
   restartLevel: 0
   respawnTime: 0
@@ -3782,6 +3830,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58f87f75d1e8e274f86592b8238f01bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BossDied:
+    m_PersistentCalls:
+      m_Calls: []
   startingHealth: 0.1
   restartLevel: 0
   respawnTime: 0
@@ -3993,6 +4044,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58f87f75d1e8e274f86592b8238f01bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BossDied:
+    m_PersistentCalls:
+      m_Calls: []
   startingHealth: 0.1
   restartLevel: 0
   respawnTime: 0
@@ -4204,6 +4258,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58f87f75d1e8e274f86592b8238f01bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BossDied:
+    m_PersistentCalls:
+      m_Calls: []
   startingHealth: 0.1
   restartLevel: 0
   respawnTime: 0
@@ -4415,6 +4472,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58f87f75d1e8e274f86592b8238f01bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BossDied:
+    m_PersistentCalls:
+      m_Calls: []
   startingHealth: 0.1
   restartLevel: 0
   respawnTime: 0
@@ -4626,6 +4686,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58f87f75d1e8e274f86592b8238f01bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BossDied:
+    m_PersistentCalls:
+      m_Calls: []
   startingHealth: 0.1
   restartLevel: 0
   respawnTime: 0

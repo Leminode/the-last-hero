@@ -1,8 +1,11 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Health : MonoBehaviour
 {
+    public UnityEvent Died;
+
     [SerializeField]
     private float startingHealth;
 
@@ -53,6 +56,8 @@ public class Health : MonoBehaviour
             {
                 gameObject.SetActive(false);
             }
+
+            Died.Invoke();
         }
     }
 
