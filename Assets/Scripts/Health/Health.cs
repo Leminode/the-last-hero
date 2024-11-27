@@ -4,7 +4,7 @@ using UnityEngine.Events;
 
 public class Health : MonoBehaviour
 {
-    public UnityEvent BossDied;
+    public UnityEvent Died;
 
     [SerializeField]
     private float startingHealth;
@@ -55,11 +55,9 @@ public class Health : MonoBehaviour
             else
             {
                 gameObject.SetActive(false);
-                if (name == "boss")
-                {
-                    BossDied.Invoke();
-                }
             }
+
+            Died.Invoke();
         }
     }
 
