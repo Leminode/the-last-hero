@@ -1,8 +1,11 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Health : MonoBehaviour
 {
+    public UnityEvent BossDied;
+
     [SerializeField]
     private float startingHealth;
 
@@ -52,6 +55,10 @@ public class Health : MonoBehaviour
             else
             {
                 gameObject.SetActive(false);
+                if (name == "boss")
+                {
+                    BossDied.Invoke();
+                }
             }
         }
     }
