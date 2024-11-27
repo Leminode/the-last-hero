@@ -1,6 +1,4 @@
-using System.Collections;
 using UnityEngine;
-using UnityEngine.Rendering.Universal;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
@@ -8,7 +6,6 @@ public class GameManager : MonoBehaviour
     private const string PlayerPrefLevel = "level";
     private const int MainMenuScene = 0;
     private const int FirstLevelScene = 1;
-    private const int EndGameScene = 3;
 
     public static GameManager Instance;
 
@@ -59,25 +56,5 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log($"GameManager: main MENU");
         SceneManager.LoadScene(MainMenuScene);
-    }
-    
-    public void EndGame()
-    {
-        StartCoroutine(startEndGame());
-    }
-
-    private IEnumerator startEndGame()
-    {
-        yield return new WaitForSeconds(0.5f);
-        var l = GameObject.FindGameObjectWithTag("Light").GetComponent<Light2D>();
-        
-        while (l.intensity > 0)
-        { 
-            l.intensity -= 0.005f;
-            yield return new WaitForSeconds(0.001f);
-        }
-
-        PlayerPrefs.SetInt(PlayerPrefLevel, FirstLevelScene);
-        SceneManager.LoadScene(EndGameScene);
     }
 }

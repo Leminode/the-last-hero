@@ -1279,11 +1279,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1621211764802503827, guid: e88770afc8108f44e8eb1c0445b48661, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 190.41
+      value: 1.16
       objectReference: {fileID: 0}
     - target: {fileID: 1621211764802503827, guid: e88770afc8108f44e8eb1c0445b48661, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.98
+      value: 15.29
       objectReference: {fileID: 0}
     - target: {fileID: 1621211764802503827, guid: e88770afc8108f44e8eb1c0445b48661, type: 3}
       propertyPath: m_LocalPosition.z
@@ -13444,14 +13444,14 @@ PrefabInstance:
     - target: {fileID: 7380715623763299396, guid: 6ef4538066306954ca7abf157de966fb, type: 3}
       propertyPath: Died.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1307104402}
+      objectReference: {fileID: 0}
     - target: {fileID: 7380715623763299396, guid: 6ef4538066306954ca7abf157de966fb, type: 3}
       propertyPath: Died.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7380715623763299396, guid: 6ef4538066306954ca7abf157de966fb, type: 3}
       propertyPath: Died.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: EndGame
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 7380715623763299396, guid: 6ef4538066306954ca7abf157de966fb, type: 3}
       propertyPath: Died.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
