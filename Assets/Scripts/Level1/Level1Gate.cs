@@ -2,8 +2,22 @@ using UnityEngine;
 
 public class Level1Gate : MonoBehaviour
 {
-    public void UpdateState(int leverState)
+    [SerializeField]
+    private int leverState;
+    
+    private bool _closedForever;
+
+    public void UpdateState(int ls)
     {
-        transform.position = leverState == 0 ? new Vector2(0, 5f) : new Vector2(0, 0);
+        if (!_closedForever)
+        {
+            transform.position = ls == leverState ? new Vector2(0, 5f) : new Vector2(0, 0);
+        }
+    }
+
+    public void CloseGateForever()
+    {
+        _closedForever = true;
+        transform.position = new Vector2(0, 0);
     }
 }
