@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class LeverController : MonoBehaviour
 {
@@ -12,6 +13,8 @@ public class LeverController : MonoBehaviour
     public float activationRange = 2f;  // Range within which the player can activate the lever
     private Transform playerTransform;  // Reference to the player's transform
 
+    public UnityEvent<int> leverStateChanged;
+    
     private void Start()
     {
         // Get the SpriteRenderer component attached to this GameObject
@@ -60,6 +63,8 @@ public class LeverController : MonoBehaviour
                 spriteRenderer.sprite = leverRightSprite;  // Set to right sprite
                 break;
         }
+        
+        leverStateChanged.Invoke(leverState);
 
         // Debug message to check the state
         Debug.Log("Lever state: " + leverState);
