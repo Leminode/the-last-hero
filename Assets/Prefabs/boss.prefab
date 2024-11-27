@@ -3030,6 +3030,7 @@ GameObject:
   - component: {fileID: 170060300597325142}
   - component: {fileID: 3221412322331648422}
   - component: {fileID: 6051624903258397837}
+  - component: {fileID: 7380715623763299396}
   m_Layer: 0
   m_Name: boss
   m_TagString: Untagged
@@ -3265,6 +3266,21 @@ MonoBehaviour:
   - {fileID: 9198769713532559206}
   - {fileID: 9054315073839645837}
   - {fileID: 4654182242621634689}
+--- !u!114 &7380715623763299396
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6931159771323142609}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58f87f75d1e8e274f86592b8238f01bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startingHealth: 5
+  restartLevel: 0
+  respawnTime: 1
 --- !u!1 &6994095626315906218
 GameObject:
   m_ObjectHideFlags: 0
