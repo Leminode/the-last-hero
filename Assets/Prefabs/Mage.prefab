@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 4271598214334264999}
   - component: {fileID: 4277803700351859678}
   - component: {fileID: 9191837143082849654}
+  - component: {fileID: 4568348636469249223}
   m_Layer: 8
   m_Name: Mage
   m_TagString: Enemy
@@ -214,6 +215,23 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+--- !u!114 &4568348636469249223
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2933794602561862786}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58f87f75d1e8e274f86592b8238f01bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startingHealth: 0
+  restartLevel: 0
+  respawnTime: 1
+  damageSound: {fileID: 8300000, guid: 8b2eedef9e1be2a419371223ddb7a736, type: 3}
+  deathSound: {fileID: 8300000, guid: dd594fbb387c5724e9010b823746e279, type: 3}
 --- !u!1 &4019274940215121006
 GameObject:
   m_ObjectHideFlags: 0
