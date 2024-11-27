@@ -7,7 +7,6 @@ TagManager:
   - Ground
   - Enemy
   - Lever
-  - Light
   layers:
   - Default
   - TransparentFX
