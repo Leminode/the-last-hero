@@ -54,7 +54,6 @@ public class GameManager : MonoBehaviour
 
     public void MainMenu()
     {
-        Debug.Log($"GameManager: main MENU");
         SceneManager.LoadScene(MainMenuScene);
     }
 }
