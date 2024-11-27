@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerController : MonoBehaviour
 {
     [SerializeField]
     private float speed;
@@ -13,6 +13,27 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField]
     private LayerMask wallLayer;
+
+    [SerializeField]
+    private LayerMask enemyLayer;
+
+    [SerializeField]
+    private float attackCooldown;
+
+    [SerializeField]
+    private float attackRange;
+
+    [SerializeField]
+    private float attackDamage;
+
+    [SerializeField]
+    private float attackBoxDistance;
+
+    [SerializeField]
+    private float decelerationDuration = 0.6f;
+
+    [SerializeField]
+    private AudioClip hitSound;
 
     [SerializeField]
     private AudioClip jumpSound;
@@ -28,8 +49,15 @@ public class PlayerMovement : MonoBehaviour
     private readonly float wallJumpingDuration = 0.3f;
     private Vector2 wallJumpingPower = new(5, 20f);
 
+    private float attackCooldownTimer = Mathf.Infinity;
+    private float decelerationTimer;
+    private float attackHorizontalVelocity;
+
     private float horizontalInput;
 
+    private bool isAttacking;
+    private bool isHeavyAttack;
+    private bool isDecelerating;
     private bool isJumping;
     private bool isWallJumping;
     private bool isTouchingWall;
@@ -51,18 +79,17 @@ public class PlayerMovement : MonoBehaviour
 
         isGrounded = CheckIsGrounded();
         isTouchingWall = CheckIsTouchingWall();
-
-        if (isTouchingWall)
-        {
-            print("touching wall");
-        }
+        isAttacking = Input.GetMouseButtonDown(0) && attackCooldownTimer > attackCooldown && isGrounded && !isTouchingWall;
 
         // Used to prevent grounded animation from playing when jumping
         if (isJumping && !isGrounded)
         {
             isJumping = false;
         }
-        
+
+        // Combat
+        Attack();
+
         // Vertical movement
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
@@ -79,18 +106,71 @@ public class PlayerMovement : MonoBehaviour
         WallSlide();
         WallJump();
 
-        if (!isWallJumping)
+        if (!isWallJumping && !isAttacking)
         {
             Flip();
+
             rb.velocity = new Vector2(horizontalInput * speed, rb.velocity.y);
         }
 
+        // Stop moving after attacking
+        if (isDecelerating)
+        {
+            decelerationTimer -= Time.deltaTime;
+            float intensity = decelerationTimer / decelerationDuration;
+
+            rb.velocity = new Vector2(Mathf.Lerp(0, attackHorizontalVelocity, intensity), rb.velocity.y);
+
+            if (decelerationTimer <= 0)
+            {
+                isDecelerating = false;
+            }
+        }
+
         // Animations
-        anim.SetBool("run", (horizontalInput != 0 || rb.velocity.x != 0) && isGrounded && !isTouchingWall);
+        anim.SetBool("run", horizontalInput != 0 && rb.velocity.x != 0 && isGrounded && !isTouchingWall);
         anim.SetBool("grounded", isGrounded && !isJumping);
         anim.SetBool("wallSliding", isWallSliding);
         anim.SetBool("jumping", isJumping);
         anim.SetFloat("yVelocity", rb.velocity.y);
+    }
+
+    private void Attack()
+    {
+        if (isAttacking)
+        {
+            attackCooldownTimer = 0;
+
+            PlayerSoundManager.instance.PlaySound(hitSound);
+            anim.SetTrigger("attack");
+
+            Invoke(nameof(DealDamage), 0.2f);
+
+            if (Mathf.Abs(rb.velocity.x) >= 0.5f)
+            {
+                isHeavyAttack = true;
+                isDecelerating = true;
+
+                decelerationTimer = decelerationDuration;
+                attackHorizontalVelocity = rb.velocity.x;
+            }
+        }
+        else
+        {
+            attackCooldownTimer += Time.deltaTime;
+        }
+    }
+
+    private void DealDamage()
+    {
+        var enemyInRange = GetEnemyInRange();
+        if (enemyInRange == null || !enemyInRange.TryGetComponent<Health>(out var enemyHealth))
+        {
+            return;
+        }
+
+        float damage = isHeavyAttack ? attackDamage * 1.5f : attackDamage;
+        enemyHealth.TakeDamage(damage);
     }
 
     private void WallJump()
@@ -167,8 +247,29 @@ public class PlayerMovement : MonoBehaviour
         return raycastHit.collider != null;
     }
 
-    public bool CanAttack()
+    private Collider2D GetEnemyInRange()
     {
-        return horizontalInput == 0 && isGrounded && !isTouchingWall;
+        RaycastHit2D hit = Physics2D.BoxCast(
+            col.bounds.center + attackBoxDistance * attackRange * transform.localScale.x * transform.right,
+            new Vector3(col.bounds.size.x * attackRange, col.bounds.size.y, col.bounds.size.z),
+            0,
+            Vector2.left,
+            0,
+            enemyLayer);
+
+        return hit.collider;
+    }
+
+    private void OnDrawGizmos()
+    {
+        if (col == null)
+        {
+            return;
+        }
+
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireCube(
+            col.bounds.center + attackBoxDistance * attackRange * transform.localScale.x * transform.right,
+            new(col.bounds.size.x * attackRange, col.bounds.size.y, col.bounds.size.z));
     }
 }
