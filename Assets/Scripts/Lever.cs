@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class LeverController : MonoBehaviour
+public class Lever : MonoBehaviour
 {
     public Sprite leverLeftSprite;   // Sprite for the left position
     public Sprite leverMiddleSprite; // Sprite for the middle position

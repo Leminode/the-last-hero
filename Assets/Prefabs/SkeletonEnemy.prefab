@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2888614919304324499}
   - component: {fileID: 8148961421980337678}
   - component: {fileID: 7373109006416351607}
+  - component: {fileID: 5012026429158401987}
   m_Layer: 0
   m_Name: SkeletonEnemy
   m_TagString: Untagged
@@ -180,3 +181,20 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &5012026429158401987
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 902007927193224443}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58f87f75d1e8e274f86592b8238f01bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startingHealth: 1
+  restartLevel: 0
+  respawnTime: 1
+  damageSound: {fileID: 8300000, guid: 8b2eedef9e1be2a419371223ddb7a736, type: 3}
+  deathSound: {fileID: 8300000, guid: 4ebc3e8248fa2624bb5d81c3b19b6bd5, type: 3}

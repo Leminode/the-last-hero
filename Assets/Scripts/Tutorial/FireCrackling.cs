@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [RequireComponent(typeof(AudioSource))]
-public class Fixed2DSound : MonoBehaviour
+public class FireCrackling : MonoBehaviour
 {
     [SerializeField]
     private Transform player; // Reference to the player's Transform

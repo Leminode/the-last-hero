@@ -11187,7 +11187,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58f87f75d1e8e274f86592b8238f01bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingHealth: 10
+  startingHealth: 1
   restartLevel: 0
   respawnTime: 1
   damageSound: {fileID: 8300000, guid: 8b2eedef9e1be2a419371223ddb7a736, type: 3}
@@ -11870,6 +11870,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: startingHealth
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7373109006416351607, guid: 128b6dec39e8e6f428eb9d7eea14a8bb, type: 3}
       propertyPath: m_Mass
       value: 10000
@@ -11906,7 +11910,8 @@ PrefabInstance:
       propertyPath: waypoints.Array.data[1]
       value: 
       objectReference: {fileID: 532446927}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5012026429158401987, guid: 128b6dec39e8e6f428eb9d7eea14a8bb, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
