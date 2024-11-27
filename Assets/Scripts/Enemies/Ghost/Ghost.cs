@@ -24,8 +24,6 @@ public class Ghost : MonoBehaviour
     [SerializeField]
     private Vector2 areaCenter;
 
-    private Vector2 moveDirection;
-
     private Vector2 direction;
     private float directionChangeCooldownTimer = Mathf.Infinity;
     private float damageCooldownTimer = Mathf.Infinity;
@@ -33,7 +31,6 @@ public class Ghost : MonoBehaviour
     private Transform player;
     private Rigidbody2D rigibody;
 
-    private readonly System.Random random = new();
     private void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
