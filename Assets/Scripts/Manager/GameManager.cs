@@ -1,4 +1,3 @@
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -7,21 +6,19 @@ public class GameManager : MonoBehaviour
     private const string PlayerPrefLevel = "level";
     private const int MainMenuScene = 0;
     private const int FirstLevelScene = 1;
-    private const int LastLevelScene = 2;
 
     public static GameManager Instance;
 
     private void Awake()
     {
-        if (Instance == null)
+        if (Instance != null && Instance != this)
         {
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
+            Destroy(this);
+
+            return;
         }
-        else
-        {
-            Destroy(gameObject);
-        }
+
+        Instance = this;
     }
 
     public void ContinueLevel()
@@ -36,20 +33,11 @@ public class GameManager : MonoBehaviour
     public void NextLevel()
     {
         var currentScene = SceneManager.GetActiveScene().buildIndex;
-
-        if (currentScene == LastLevelScene)
-        {
-            // TODO: change to end
-            Debug.Log($"GameManager: last level {currentScene}, changing to ending");
-
-            return;
-        }
-
         var nextScene = currentScene + 1;
 
         Debug.Log($"GameManager: next level, changing scene to {nextScene}");
-
         PlayerPrefs.SetInt(PlayerPrefLevel, nextScene);
+
         PlayerPrefs.Save();
 
         SceneManager.LoadScene(nextScene);
@@ -58,9 +46,9 @@ public class GameManager : MonoBehaviour
     public void RestartLevel()
     {
         var currentScene = SceneManager.GetActiveScene().buildIndex;
-        
+
         Debug.Log($"GameManager: restart level, changing scene to {currentScene}");
-        
+
         SceneManager.LoadScene(currentScene);
     }
 
