@@ -81,8 +81,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startingHealth: 5
-  restartLevel: 1
-  respawnTime: 1
 --- !u!212 &230775476148339752
 SpriteRenderer:
   m_ObjectHideFlags: 0

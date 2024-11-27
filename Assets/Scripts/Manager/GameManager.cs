@@ -56,4 +56,9 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.LoadScene(MainMenuScene);
     }
+
+    public void PauseGame(bool pause)
+    {
+        Time.timeScale = pause ? 0 : 1;
+    }
 }
