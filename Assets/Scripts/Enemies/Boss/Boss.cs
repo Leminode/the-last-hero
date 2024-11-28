@@ -1,6 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Boss : MonoBehaviour
 {
@@ -35,17 +34,39 @@ public class Boss : MonoBehaviour
     private float directionChangeCooldownTimer = Mathf.Infinity;
     private float attackTimer = Mathf.Infinity;
 
+    private bool eventTriggered = false;
+
     private Transform player;
     private Rigidbody2D rigibody;
+    private UnityEvent gameWonEvent;
+    private Health health;
 
     private void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
         rigibody = GetComponent<Rigidbody2D>();
+        health = GetComponent<Health>();
+        gameWonEvent = new UnityEvent();
+    }
+
+    private void Start()
+    {
+        gameWonEvent.AddListener(GameObject.FindGameObjectWithTag("UIManager").GetComponent<UIManager>().WinScreen);
     }
 
     private void Update()
     {
+        if (health.IsDead)
+        {
+            if (!eventTriggered)
+            {
+                gameWonEvent.Invoke();
+                eventTriggered = true;
+            }
+
+            return;
+        }
+
         attackTimer += Time.deltaTime;
         if (attackTimer >= attackCooldown && IsPlayerDetected())
         {

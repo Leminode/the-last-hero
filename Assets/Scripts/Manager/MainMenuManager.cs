@@ -7,6 +7,16 @@ public class MainMenuManager : MonoBehaviour
         GameManager.Instance.ContinueLevel();
     }
 
+    public void Credits()
+    {
+        GameManager.Instance.Credits();
+    }
+
+    public void BackToMenu()
+    {
+        GameManager.Instance.MainMenu();
+    }
+
     public void Quit()
     {
         #if UNITY_EDITOR
