@@ -10,26 +10,39 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     private GameObject pauseScreen;
 
-    private bool isGameOver;
+    [Header("Win Screen")]
+    [SerializeField]
+    private GameObject winScreen;
+
+    private bool isScreenActive;
 
     private void Awake()
     {
         gameOverScreen.SetActive(false);
         pauseScreen.SetActive(false);
+        winScreen.SetActive(false);
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape) && !isGameOver)
+        if (Input.GetKeyDown(KeyCode.Escape) && !isScreenActive)
         {
-            PauseGame();
+            PauseScreen();
         }
+
+        GameManager.Instance.PauseGame(pauseScreen.activeSelf);
     }
 
     public void GameOver()
     {
-        isGameOver = true;
+        isScreenActive = true;
         gameOverScreen.SetActive(true);
+    }
+
+    public void WinScreen()
+    {
+        isScreenActive = true;
+        winScreen.SetActive(true);
     }
 
     public void RestartLevel()
@@ -42,11 +55,13 @@ public class UIManager : MonoBehaviour
         GameManager.Instance.MainMenu();
     }
 
-    public void PauseGame()
+    public void PauseScreen()
     {
-        bool pause = !pauseScreen.activeSelf;
+        pauseScreen.SetActive(!pauseScreen.activeSelf);
+    }
 
-        pauseScreen.SetActive(pause);
-        GameManager.Instance.PauseGame(pause);
+    public void NextLevel()
+    {
+        GameManager.Instance.NextLevel();
     }
 }

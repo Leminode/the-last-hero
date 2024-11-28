@@ -5,7 +5,8 @@ public class GameManager : MonoBehaviour
 {
     private const string PlayerPrefLevel = "level";
     private const int MainMenuScene = 0;
-    private const int FirstLevelScene = 1;
+    private const int CreditsScene = 1;
+    private const int FirstLevelScene = 2;
 
     public static GameManager Instance;
 
@@ -35,8 +36,18 @@ public class GameManager : MonoBehaviour
         var currentScene = SceneManager.GetActiveScene().buildIndex;
         var nextScene = currentScene + 1;
 
+        if (nextScene == SceneManager.sceneCountInBuildSettings)
+        {
+            nextScene = MainMenuScene;
+
+            PlayerPrefs.SetInt(PlayerPrefLevel, FirstLevelScene);
+        }
+        else
+        {
+            PlayerPrefs.SetInt(PlayerPrefLevel, nextScene);
+        }
+        
         Debug.Log($"GameManager: next level, changing scene to {nextScene}");
-        PlayerPrefs.SetInt(PlayerPrefLevel, nextScene);
 
         PlayerPrefs.Save();
 
@@ -55,6 +66,11 @@ public class GameManager : MonoBehaviour
     public void MainMenu()
     {
         SceneManager.LoadScene(MainMenuScene);
+    }
+
+    public void Credits()
+    {
+        SceneManager.LoadScene(CreditsScene);
     }
 
     public void PauseGame(bool pause)
